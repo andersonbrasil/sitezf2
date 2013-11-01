@@ -1,0 +1,28 @@
+<?php
+$title = 'My sites';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('site', array('action'=>'add'));?>">Add new site</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>Title</th>
+     <th>Artist</th>
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($sites as $site) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($site->title);?></td>
+     <td><?php echo $this->escapeHtml($site->artist);?></td>
+     <td>
+         <a href="<?php echo $this->url('site',
+             array('action'=>'edit', 'id' => $site->id));?>">Edit</a>
+         <a href="<?php echo $this->url('site',
+             array('action'=>'delete', 'id' => $site->id));?>">Delete</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
